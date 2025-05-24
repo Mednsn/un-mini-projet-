@@ -1,0 +1,110 @@
+/* Palette : brun café, crème, doré doux */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f0e6; /* crème */
+  margin: 0;
+  padding: 0;
+  color: #3e2f1c; /* brun foncé */
+}
+
+.menu-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #fffaf3; /* crème plus claire */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #e0d4c0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #6b3e26; /* café moyen */
+  font-size: 2.5em;
+  letter-spacing: 1px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.6em;
+  border-bottom: 2px solid #d6b285; /* doré doux */
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+  color: #6b3e26;
+  margin: 60px;
+  text-decoration: underline;
+}
+
+.item {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fdf9f3;
+  border-left: 5px solid #d6b285;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.item:hover {
+  background-color: #f3e8d9;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0;
+  color: #3e2f1c;
+}
+
+.price {
+  color: #a67c52;
+  margin: 5px 0 0;
+  font-style: italic;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  color: #6b3e26;
+  font-weight: bold;
+  background-color: #d6b285;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* Empile en une seule colonne sur mobile */
+  }
+}
+.messagetxt{
+ margin-bottom: 20px;
+  font-size: 1.2em;
+  text-align: center;
+  color: #6b3e26; /* café moyen */
+  
+}
+
+.button-return {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  
+  font-weight: bold;
+  background-color: #6b3e26; /* café moyen */
+  padding: 10px 15px;
+ 
+
+}

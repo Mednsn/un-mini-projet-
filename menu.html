@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu du Café Dania</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <div class="menu-container">
+  <h1>Menu du Café Dania</h1>
+
+  <div class="menu-grid">
+      <!-- Colonne Gauche -->
+      <div>
+        <section>
+          <h2>🥤 Boissons</h2>
+
+          <div class="item">
+            <p class="name"><input type="checkbox" id="jusorange" name="jusorange" >
+                <label for="jusorange">Jus d'orange frais</label></p>
+            <p class="price">20 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="smoothie" name="smoothie" >
+                <label for="smoothie">Smoothie banane-fraise</label></p>
+            <p class="price">30 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="eau" name="eau" >
+                <label for="eau">Eau minérale</label></p>
+            <p class="price">10 DH</p>
+          </div>
+          <div class="item">
+            <p class="name">Soda (Coca, Fanta, Sprite...)</p>
+            <select name="pays" id="soda" required>
+              <option value="">----</option>
+            <option value="">Coca</option>
+            <option value="fr">Fanta</option>
+            <option value="be">Sprite</option>
+            <option value="ch">Schweppes</option>
+            <option value="ch">Pepsi</option>
+        </select>
+            <p class="price">12 DH</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>🍽️ Nourriture</h2>
+
+          <div class="item">
+            <p class="name"><input type="checkbox" id="croissant" name="croissant" >
+                <label for="croissant">Croissant au beurre</label></p>
+            <p class="price">12 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="sandwich" name="sandwich" >
+                <label for="sandwich">Sandwich Mixte</label></p>
+            <p class="price">25 DH</p>
+          </div>
+          <div class="item">
+            <p class="name">tacos(Viande Hachée,Poulet,Luncheon,Dinde,Saucisse,Mixte  ...) </p>
+            <select name="pays" id="tacos" required>
+              <option value="">----</option>
+              <option value="">Tacos Viande Hachée</option>
+              <option value="fr">Tacos Poulet</option>
+              <option value="be">Tacos Luncheon</option>
+              <option value="ch">Tacos Saucisse</option>
+              <option value="ch">Tacos Dinde</option>
+              <option value="ch">Tacos Mixte</option>
+        </select>
+
+            <p class="price">20 DH</p>
+          </div>
+          <div class="item">
+            <p class="name">Panini (Thon ,Dinde, Saucisse,Plat Mixte,Royal ...)</p>
+            <select name="pays" id="panini" required>
+              <option value="">----</option>
+            <option value="">Panini Thon</option>
+            <option value="fr">Panini Dinde</option> 
+             <option value="fr">Panini Mixte</option> 
+              <option value="fr">Panini Soucisse</option>
+                <option value="fr">Panini Royal</option>
+        </select>
+            <p class="price">20 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="salade" name="salade" >
+                <label for="salade">salade</label></p>
+            <p class="price">20 DH</p>
+          </div>
+          <div class="item">
+            <p class="name">Pizza (Margarita,Viande Hachée,Saucisse,Mixte) </p>
+                 <select name="pays" id="pizza" required>
+                  <option value="">----</option>
+            <option value="">Pizza Margarita</option>
+            <option value="fr">Pizza Viande Hachée</option>
+            <option value="be">Pizza Saucisse</option>
+            <option value="ch">Pizza Mixte</option>
+        </select>
+            <p class="price">30 DH</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Colonne Droite -->
+      <div>
+        <section>
+          <h2>☕ Cafés</h2>
+
+          <div class="item">
+            <p class="name"> <input type="checkbox" id="espreso" name="espreso" >
+                <label for="espreso">Espresso</label></p>
+            <p class="price">10 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="lait" name="lait" >
+                <label for="lait">Café au lait</label></p>
+            <p class="price">10 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="cappusion" name="cappusion" >
+                <label for="cappusion">Cappuccino</label></p>
+            <p class="price">12 DH</p>
+          </div>
+          <div class="item">
+            <p class="name">Café (Zorro,noire)</p>
+            <select name="pays" id="noir-zero" required>
+              <option value="">----</option>
+            <option value="">Café noire</option>
+            <option value="fr">Café Zerro</option>
+        </select>
+            <p class="price">24 DH</p>
+          </div>
+
+           <div class="item">
+            <p class="name">Café (glacé,filtré)</p>
+          <select name="pays" id="glass-filtre" required>
+            <option value="">----</option>
+            <option value="gl">Café glacé</option>
+            <option value="fi">Café filtré</option>
+        </select>
+            <p class="price">24 DH</p>
+          </div>
+          
+        </section>
+         <section>
+          <h2>☕ thé</h2>
+
+          <div class="item">
+            <p class="name"><input type="checkbox" id="metal" name="metal" >
+                <label for="metal">théière en métal</label></p>
+            <p class="price">10 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="specieux" name="specieux" >
+                <label for="specieux">thés spéciaux</label></p>
+            <p class="price">10 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"> <input type="checkbox" id="safran" name="safran" >
+                <label for="safran">thé au safran</label></p>
+            <p class="price">12 DH</p>
+          </div>
+          <div class="item">
+            <p class="name"><input type="checkbox" id="amandes" name="amandes" >
+                <label for="amandes">thé aux amandes</label></p>
+            <p class="price">24 DH</p>
+          </div>
+           <div class="item">
+            <p class="name"><input type="checkbox" id="berbere" name="berbere" >
+                <label for="berbere">thé berbère (sans menthe, avec des herbes locales</label>)</p>
+            <p class="price">24 DH</p>
+          </div>
+           <div class="item">
+            <p class="name"><input type="checkbox" id="noir" name="noir" >
+                <label for="noir">thé noir</label> </p>
+            <p class="price">24 DH</p>
+          </div>
+          <div class="item">
+            <p class="name" ><input type="checkbox" id="herbes" name="herbes" >
+                <label for="herbes">thé aux herbes (louiza, sauge, absinthe).</label> </p>
+            <p class="price">24 DH</p>
+          </div>
+          
+        </section>
+      </div>
+    </div>
+
+    
+    
+     <div>
+     
+        <label for="table-number"> >>> choisir votreNuméro de table:</label> 
+        <input type="number" id="table-number" name="table_number" min="1" max="25" required>
+        <br><br>
+        <div class="messagetxt">
+        <p id="numtable" class="tablenum"></p>
+        <p id="messageBox" class="milieu">Pour demander quelque chose, juste click sur votre choix :</p>
+        <P id="messageBOX" class="mangeclasse"></P>
+        </div>
+
+
+
+
+       <br><br>
+
+
+        <input type="submit" id="demanderBtn" style="width: 222px;" value="Demander">
+      
+     </div>
+
+
+
+
+
+
+          <div class="button-return">
+          
+           <a href="actuile.html"> <button id="openMenu" >Return à l'acuile</button></a>
+          </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2023 Café Dania. Tous droits réservés.</p>
+    
+</div>
+<script src="ecouteuse.js"></script>
+  
+</body>
+</html>
