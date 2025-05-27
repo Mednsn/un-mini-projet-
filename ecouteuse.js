@@ -1,19 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+  
+  const messageBoxSelections = document.getElementById('messageBox');
+  const messageBoxSupplements = document.getElementById('messageBOX');
+  const numTableElement = document.getElementById('numtable');
+  const demanderBtn = document.getElementById('demanderBtn');
+  const tableNumberInput = document.getElementById('table-number');
 
-let messageBox;
-const selectedItems = new Set();
-
-document.addEventListener('DOMContentLoaded', function() {
-  messageBox = document.getElementById('messageBox');
+  const selectedItems = new Set();
+  const selections = {};
   
   const checkboxesConfig = [
     { id: 'jusorange', message: 'Jus Orange frais' },
     { id: 'smoothie', message: 'Smoothie banane-fraise' },
     { id: 'eau', message: 'Eau minérale' },
     { id: 'croissant', message: 'Croissant' },
-    { id: 'salade', message: 'Salade César' },
+    { id: 'salade', message: 'Salade' },
     { id: 'sandwich', message: 'Sandwich mixte' },
     { id: 'espreso', message: 'Espresso' },
-    { id: 'lait', message: 'café au lait' },
+    { id: 'lait', message: 'Café au lait' },
     { id: 'cappusion', message: 'Cappuccino' },
     { id: 'metal', message: 'Thé métallique' },
     { id: 'specieux', message: 'Thé spécieux' },
@@ -22,59 +26,40 @@ document.addEventListener('DOMContentLoaded', function() {
     { id: 'berbere', message: 'Thé berbère' },
     { id: 'noir', message: 'Thé noir' },
     { id: 'herbes', message: 'Thé aux herbes' }
-   
   ];
-
-  checkboxesConfig.forEach(config => {
-    const checkbox = document.getElementById(config.id);
+  
+  checkboxesConfig.forEach(({ id, message }) => {
+    const checkbox = document.getElementById(id);
     if (checkbox) {
-      checkbox.addEventListener('change', function() {
-        if (this.checked) {
-          selectedItems.add(config.message);
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          selectedItems.add(message);
         } else {
-          selectedItems.delete(config.message);
+          selectedItems.delete(message);
         }
-        updateMessageBox();
+        updateSupplementsBox();
       });
     }
   });
-});
 
-function updateMessageBox() {
-  if (selectedItems.size > 0) {
-    messageBox.innerHTML = 'Votre demande contient :<br>' + 
-      Array.from(selectedItems).map(item => `• ${item}`).join('<br>');
-  } else {
-    messageBox.textContent = '';
+  function updateSupplementsBox() {
+    if (selectedItems.size > 0) {
+      messageBoxSupplements.innerHTML = 'Suppléments :<br>' + Array.from(selectedItems).map(item => `• ${item}`).join('<br>');
+    } else {
+      messageBoxSupplements.textContent = '';
+    }
   }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-  const inputNumber = document.getElementById('table-number');
-  const paragraphe = document.getElementById('numtable');
   
+  if (tableNumberInput && numTableElement) {
+    tableNumberInput.addEventListener('input', () => {
+      numTableElement.textContent = `Numéro de table : ${tableNumberInput.value}`;
+      numTableElement.style.color = 'green';
+      numTableElement.style.fontWeight = 'bold';
+    });
+  }
   
-  inputNumber.addEventListener('input', function() {
-    
-    paragraphe.textContent = `le numero de table est : ${this.value}`;
-    
-   
-    paragraphe.style.color = 'green';
-    paragraphe.style.fontWeight = 'bold';
-    
-    
-  });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const messageBox = document.getElementById('messageBox');
-  const selections = {};
-  
- 
   const allSelects = ['soda', 'tacos', 'panini', 'pizza', 'glass-filtre', 'noir-zero'];
-  
- 
   const displayNames = {
     'soda': 'Boisson',
     'tacos': 'Tacos',
@@ -84,92 +69,87 @@ document.addEventListener('DOMContentLoaded', function() {
     'noir-zero': 'Café spécial'
   };
 
-  
-  allSelects.forEach(selectId => {
-    const select = document.getElementById(selectId);
-    
-    select.addEventListener('change', function() {
-      const selectedOption = this.options[this.selectedIndex];
-      
-      
-      if (this.value === '' && selectedOption.text === '----') {
-        delete selections[selectId];
-      } else {
-        selections[selectId] = {
-          name: displayNames[selectId] || selectId,
-          value: selectedOption.text
-        };
-      }
-      
-      updateMessageBox();
-    });
+  allSelects.forEach(id => {
+    const select = document.getElementById(id);
+    if (select) {
+      select.addEventListener('change', () => {
+        const option = select.options[select.selectedIndex];
+        if (select.value === '' || option.text === '----') {
+          delete selections[id];
+        } else {
+          selections[id] = {
+            name: displayNames[id] || id,
+            value: option.text
+          };
+        }
+        updateSelectionsBox();
+      });
+    }
   });
 
-  function updateMessageBox() {
-    let message = '\n ';
-    let hasSelection = false;
-    
- 
-    for (const [id, selection] of Object.entries(selections)) {
-      if (selection.value && selection.value !== '----') {
-        message += `${selection.name}: ${selection.value}\n `;
-        hasSelection = true;
-      }
-    }
-    
-   
-    message = message.replace(/, $/, '');
-    
-   
-    if (hasSelection) {
-      messageBOX.textContent = message;
-       messageBOX.style.whiteSpace = 'pre-line';
-      messageBOX.style.display = 'block';
+  function updateSelectionsBox() {
+    const selectedEntries = Object.values(selections);
+    if (selectedEntries.length > 0) {
+      messageBoxSelections.innerHTML = 'Vos sélections :<br>' + 
+        selectedEntries.map(s => `• ${s.name}: ${s.value}`).join('<br>');
     } else {
-      messageBOX.textContent = 'Aucune sélection pour le moment';
-      messageBOX.style.display = 'block';
+      messageBoxSelections.textContent = 'Aucune sélection pour le moment';
     }
   }
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const demanderBtn = document.getElementById('demanderBtn');
   
-  demanderBtn.addEventListener('click', function(e) {
-    e.preventDefault(); 
-    
-  
-    const numTable = document.getElementById('numtable').textContent;
-    const messageBox1 = document.getElementById('messageBox').textContent;
-    const messageBox2 = document.getElementById('messageBOX').textContent;
-    
-    
-    const commandeData = {
-      table: numTable.replace('Numéro de table : ', ''),
-      selections: messageBox1.replace('Vos sélections :\n', ''),
-      supplements: messageBox2.replace('Suppléments :\n', ''),
-      timestamp: new Date().toISOString()
-    };
-    
-    
-    envoyerCommande(commandeData);
-    
-  
-  });
+  if (demanderBtn) {
+    demanderBtn.addEventListener('click', (e) => {
+      e.preventDefault();
 
-  function envoyerViaFormulaire(data) {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'demande.php';  
-    
-    for (const [key, value] of Object.entries(data)) {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = value;
-      form.appendChild(input);
-    }
-    
-    document.body.appendChild(form);
-    form.submit();
+      const tableNumber = tableNumberInput ? tableNumberInput.value : '';
+      if (!tableNumber) {
+        alert('Veuillez entrer un numéro de table.');
+        return;
+      }
+      
+      const hasSelections = Object.keys(selections).length > 0 || selectedItems.size > 0;
+      if (!hasSelections) {
+        alert('Veuillez sélectionner au moins un article.');
+        return;
+      }
+      
+      const commandeData = {
+        table: tableNumber,
+        selections: Object.values(selections).map(s => `${s.name}: ${s.value}`).join(', '),
+        supplements: Array.from(selectedItems).join(', '),
+        timestamp: new Date().toLocaleString()
+      };
+
+      envoyerCommande(commandeData);
+    });
+  }
+
+  function envoyerCommande(data) {
+    fetch('save_order.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.status === 'success') {
+        alert('Commande envoyée avec succès!');
+        
+        selectedItems.clear();
+        Object.keys(selections).forEach(key => delete selections[key]);
+        updateSelectionsBox();
+        updateSupplementsBox();
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        document.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+      } else {
+        alert('Erreur lors de l\'envoi de la commande');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Erreur lors de l\'envoi de la commande');
+    });
   }
 });
