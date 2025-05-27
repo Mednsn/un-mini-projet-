@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO contact (name, email, message) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $nom, $email, $mssg);
     if ($stmt->execute()) {
-        echo "Message sent successfully!";
+        echo "Message sent successfully! Les information de client est nome : $nom email:($email).";
     } 
 $stmt->close();
     $conn->close();
